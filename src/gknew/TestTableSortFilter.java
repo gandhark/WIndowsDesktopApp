@@ -26,6 +26,7 @@ package gknew;
  * @author gandhark
  */
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -51,6 +52,9 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -88,6 +92,10 @@ public class TestTableSortFilter extends JPanel {
     //private DefaultTableModel model = new DefaultTableModel(data1, columnNames);
     
     private JTable table = new JTable(buildTableModel(rs));
+    
+    
+    TableColumnModel tcm = table.getColumnModel();
+
    // JOptionPane.showMessageDialog(null, new JScrollPane(table));
     
     
@@ -196,6 +204,35 @@ public class TestTableSortFilter extends JPanel {
             }
 
         });
+        tcm.removeColumn(tcm.getColumn(9));
+        /*
+        table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
+
+for (int column = 0; column < table.getColumnCount(); column++)
+{
+    TableColumn tableColumn = table.getColumnModel().getColumn(column);
+    int preferredWidth = tableColumn.getMinWidth();
+    int maxWidth = tableColumn.getMaxWidth();
+
+    for (int row = 0; row < table.getRowCount(); row++)
+    {
+        TableCellRenderer cellRenderer = table.getCellRenderer(row, column);
+        Component c = table.prepareRenderer(cellRenderer, row, column);
+        int width = c.getPreferredSize().width + table.getIntercellSpacing().width;
+        preferredWidth = Math.max(preferredWidth, width);
+
+        //  We've exceeded the maximum width, no need to check other rows
+
+        if (preferredWidth >= maxWidth)
+        {
+            preferredWidth = maxWidth;
+            break;
+        }
+    }
+
+    tableColumn.setPreferredWidth( preferredWidth );
+}*/
+        
     }
 
     public static void main(String[] args) {

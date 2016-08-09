@@ -122,10 +122,11 @@ public class TableWithButtonDemo
     }
      columnNames.add("Balance_Ammount");
     // data of the table
+     Object value=null;
     Vector<Vector<Object>> data = new Vector<Vector<Object>>();
     while (rs.next()) {
        int kk=0;
-       Object value;
+       
        Object value1=0;
        Object value2=0;
        
@@ -153,8 +154,11 @@ public class TableWithButtonDemo
             }
             
             
-            //value=(int)value2 - (int)value1;
-            //System.err.println("balance is "+value);
+            value=(int)value2 - (int)value1;
+            System.out.println("balance is "+value);
+            
+            
+            
         }
         
         
@@ -170,7 +174,7 @@ public class TableWithButtonDemo
         
         
         
-        vector.add("ef");
+        vector.add(value);
         data.add(vector);
     }
 
@@ -278,42 +282,24 @@ public class TableWithButtonDemo
               
 
 */
+              
+             
+             
               //updatequery="update customer set custname='gandhar' where billno ="+table.getValueAt(row, 0);
-              updatequery="update customer set custname= ? where billno ="+table.getValueAt(row, 0);
-              stmt.executeUpdate(updatequery);
+              //stmt.executeUpdate(updatequery);
               
-              
-              
+              updatequery="update customer set custname = ? where billno = ? ";
               preparedStatement = connection.prepareStatement(updatequery);
 
-			//preparedStatement.setString(1, (String) table.getValueAt(row, 1));
-			preparedStatement.setString(1, "gk");
-            //preparedStatement.setInt(2, 1001);
-
+			
+              
+              preparedStatement.setInt(2, (int) table.getValueAt(row, 0));
+              preparedStatement.setString(1, (String) table.getValueAt(row, 1));
+                        
+			
 			// execute update SQL stetement
 			preparedStatement.executeUpdate();
 
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
               
               
               JOptionPane.showMessageDialog(button, "Column with Value: "+table.getValueAt(row, 1) + " -  Clicked!");
