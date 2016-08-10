@@ -102,7 +102,7 @@ public class TableWithButtonDemo
             private JFrame frame = new JFrame("Table Demo");       
           
            // private String[] columnNames = {"Country", "Capital", "Population in Millions","g","g","g","g","g","g","button","f"};
-            private Object[][] data;
+           // private Object[][] data;
             private TableFromMySqlDatabase td= new TableFromMySqlDatabase();
             private JTable table = new JTable(buildTableModel(rs));
             
@@ -154,7 +154,7 @@ public class TableWithButtonDemo
             }
             
             
-            value=(int)value2 - (int)value1;
+            value=(int)value1 - (int)value2;
             System.out.println("balance is "+value);
             
             
@@ -288,14 +288,20 @@ public class TableWithButtonDemo
               //updatequery="update customer set custname='gandhar' where billno ="+table.getValueAt(row, 0);
               //stmt.executeUpdate(updatequery);
               
-              updatequery="update customer set custname = ? where billno = ? ";
+              //updatequery="update customer set custname = ?,custaddress = ? ,idolammountpaid = ? where billno = ? ";
+              updatequery="update customer set custname = ?,custaddress = ?  where billno = ? ";
               preparedStatement = connection.prepareStatement(updatequery);
 
 			
               
-              preparedStatement.setInt(2, (int) table.getValueAt(row, 0));
+              
               preparedStatement.setString(1, (String) table.getValueAt(row, 1));
-                        
+              preparedStatement.setString(2, (String) table.getValueAt(row, 2));
+              //preparedStatement.setString(3, (String) table.getValueAt(row, 6));
+              preparedStatement.setInt(3, (int) table.getValueAt(row, 0));
+              
+                        System.err.println("gk");
+                        System.out.println();
 			
 			// execute update SQL stetement
 			preparedStatement.executeUpdate();
