@@ -303,6 +303,7 @@ public class NewFrame extends java.awt.Frame {
      var_idoltotalammount.setText("");
      var_dateofissue.setDate(null);
      var_dateoforder.setDate(null); 
+     var_billbo.setText(null); 
     }//GEN-LAST:event_button1ActionPerformed
 
     private void var_custaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_var_custaddressActionPerformed
