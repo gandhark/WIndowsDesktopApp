@@ -224,7 +224,10 @@ public class TableWithButtonDemo
 
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
     {
-      setForeground(Color.black);
+      
+        
+        setForeground(Color.black);
+      //setBackground(UIManager.getColor("Button.background"));
       setBackground(UIManager.getColor("Button.background"));
       setText((value == null) ? "" : value.toString());
       return this;
@@ -289,16 +292,21 @@ public class TableWithButtonDemo
               //stmt.executeUpdate(updatequery);
               
               //updatequery="update customer set custname = ?,custaddress = ? ,idolammountpaid = ? where billno = ? ";
-              updatequery="update customer set custname = ?,custaddress = ?  where billno = ? ";
+              
+              
+              updatequery="update customer set custname = ?,custaddress = ? , custcontactno = ? ,idolammountpaid = ? where billno = ? ";
+              
+              
               preparedStatement = connection.prepareStatement(updatequery);
 
-			
-              
+		//int idolamountpaid=table.getValueAt(row, 6);	
+             // int dolamountpaid=table.getValueAt(row, 7);	
               
               preparedStatement.setString(1, (String) table.getValueAt(row, 1));
               preparedStatement.setString(2, (String) table.getValueAt(row, 2));
-              //preparedStatement.setString(3, (String) table.getValueAt(row, 6));
-              preparedStatement.setInt(3, (int) table.getValueAt(row, 0));
+              preparedStatement.setString(3, (String) table.getValueAt(row, 8));
+              preparedStatement.setInt(4, (int) table.getValueAt(row, 7));
+              preparedStatement.setInt(5, (int) table.getValueAt(row, 0));
               
                         System.err.println("gk");
                         System.out.println();
@@ -306,6 +314,16 @@ public class TableWithButtonDemo
 			// execute update SQL stetement
 			preparedStatement.executeUpdate();
 
+                        //int tp=(int) table.getValueAt(row, 7);
+                        
+                        
+                        
+              
+                        //here forcefully asked to set value as fullpayment.
+                        table.setValueAt(table.getValueAt(row, 7), row,6 );
+                        int t=(int)table.getValueAt(row, 7)- (int) table.getValueAt(row, 6);
+              table.setValueAt(t, row,10 );
+              
               
               
               JOptionPane.showMessageDialog(button, "Column with Value: "+table.getValueAt(row, 1) + " -  Clicked!");

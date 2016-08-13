@@ -5,6 +5,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.BoxLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /*
@@ -41,6 +44,10 @@ public class NewFrame extends java.awt.Frame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         label1 = new java.awt.Label();
         var_billbo = new java.awt.TextField();
         label2 = new java.awt.Label();
@@ -61,13 +68,26 @@ public class NewFrame extends java.awt.Frame {
         var_custcontactno = new java.awt.TextField();
         button1 = new java.awt.Button();
 
-        setBackground(new java.awt.Color(255, 204, 0));
+        setBackground(new java.awt.Color(255, 255, 255));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 exitForm(evt);
             }
         });
         setLayout(new java.awt.GridLayout(11, 2, 50, 10));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel1.setText("SWAPNA ARTS");
+        jPanel2.add(jLabel1);
+        jPanel2.add(jPanel3);
+
+        add(jPanel2);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel2.setText("SWAPNA ARTS");
+        add(jLabel2);
 
         label1.setText("CustomerId/billno");
         add(label1);
@@ -272,8 +292,17 @@ public class NewFrame extends java.awt.Frame {
             }
         
         
-        
-        
+       
+     
+     JOptionPane.showMessageDialog(button1, "Customer "+ var_custname.getText()+" Entry succcessfully booked idol");
+     var_ammountpaid.setText("");
+     var_custaddress.setText("");
+     var_custcontactno.setText("");
+     var_custname.setText("");
+     var_idoldescription.setText("");
+     var_idoltotalammount.setText("");
+     var_dateofissue.setDate(null);
+     var_dateoforder.setDate(null); 
     }//GEN-LAST:event_button1ActionPerformed
 
     private void var_custaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_var_custaddressActionPerformed
@@ -293,11 +322,18 @@ public class NewFrame extends java.awt.Frame {
                 new NewFrame().setVisible(true);
             }
         });
+        
+        
+        
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button button1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private java.awt.Label label1;
     private java.awt.Label label2;
     private java.awt.Label label3;
