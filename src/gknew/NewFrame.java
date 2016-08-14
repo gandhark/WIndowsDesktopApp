@@ -89,7 +89,7 @@ public class NewFrame extends java.awt.Frame {
         jLabel2.setText("SWAPNA ARTS");
         add(jLabel2);
 
-        label1.setText("CustomerId/billno");
+        label1.setText("Bill No");
         add(label1);
 
         var_billbo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -101,13 +101,13 @@ public class NewFrame extends java.awt.Frame {
         });
         add(var_billbo);
 
-        label2.setText("CustomerName");
+        label2.setText("Customer Name");
         add(label2);
 
         var_custname.setName("CustomerName"); // NOI18N
         add(var_custname);
 
-        label3.setText("CustomerAddress");
+        label3.setText("Customer Address");
         add(label3);
 
         var_custaddress.setName("CustomerAddress"); // NOI18N
@@ -119,37 +119,37 @@ public class NewFrame extends java.awt.Frame {
         add(var_custaddress);
 
         label4.setName("Dateoforder"); // NOI18N
-        label4.setText("Dateoforder");
+        label4.setText("Date of order");
         add(label4);
         add(var_dateoforder);
 
         label5.setName("Dateofissue"); // NOI18N
-        label5.setText("dateofissue");
+        label5.setText("date of Issue");
         add(label5);
         add(var_dateofissue);
 
         label6.setName("idoldescription"); // NOI18N
-        label6.setText("idoldescription");
+        label6.setText("Idol Description");
         add(label6);
 
         var_idoldescription.setName("idolid"); // NOI18N
         add(var_idoldescription);
 
         label8.setName("idolammountpaid"); // NOI18N
-        label8.setText("idolammountpaid");
+        label8.setText("Advanced Paid");
         add(label8);
 
         var_ammountpaid.setName("ammountgiven"); // NOI18N
         add(var_ammountpaid);
 
         label9.setName("idoltotalammount"); // NOI18N
-        label9.setText("idoltotalammount");
+        label9.setText("Total Ammount");
         add(label9);
 
         var_idoltotalammount.setName("idoltotalammount"); // NOI18N
         add(var_idoltotalammount);
 
-        label7.setText("CustomerContact");
+        label7.setText("Customer Contact");
         add(label7);
 
         var_custcontactno.setName("CustomerContact"); // NOI18N

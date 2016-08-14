@@ -67,7 +67,7 @@
     </Component>
     <Component class="java.awt.Label" name="label1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="CustomerId/billno"/>
+        <Property name="text" type="java.lang.String" value="Bill No"/>
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="var_billbo">
@@ -83,7 +83,7 @@
     </Component>
     <Component class="java.awt.Label" name="label2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="CustomerName"/>
+        <Property name="text" type="java.lang.String" value="Customer Name"/>
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="var_custname">
@@ -93,7 +93,7 @@
     </Component>
     <Component class="java.awt.Label" name="label3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="CustomerAddress"/>
+        <Property name="text" type="java.lang.String" value="Customer Address"/>
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="var_custaddress">
@@ -107,7 +107,7 @@
     <Component class="java.awt.Label" name="label4">
       <Properties>
         <Property name="name" type="java.lang.String" value="Dateoforder" noResource="true"/>
-        <Property name="text" type="java.lang.String" value="Dateoforder"/>
+        <Property name="text" type="java.lang.String" value="Date of order"/>
       </Properties>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="var_dateoforder">
@@ -115,7 +115,7 @@
     <Component class="java.awt.Label" name="label5">
       <Properties>
         <Property name="name" type="java.lang.String" value="Dateofissue" noResource="true"/>
-        <Property name="text" type="java.lang.String" value="dateofissue"/>
+        <Property name="text" type="java.lang.String" value="date of Issue"/>
       </Properties>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="var_dateofissue">
@@ -123,7 +123,7 @@
     <Component class="java.awt.Label" name="label6">
       <Properties>
         <Property name="name" type="java.lang.String" value="idoldescription" noResource="true"/>
-        <Property name="text" type="java.lang.String" value="idoldescription"/>
+        <Property name="text" type="java.lang.String" value="Idol Description"/>
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="var_idoldescription">
@@ -134,7 +134,7 @@
     <Component class="java.awt.Label" name="label8">
       <Properties>
         <Property name="name" type="java.lang.String" value="idolammountpaid" noResource="true"/>
-        <Property name="text" type="java.lang.String" value="idolammountpaid"/>
+        <Property name="text" type="java.lang.String" value="Advanced Paid"/>
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="var_ammountpaid">
@@ -145,7 +145,7 @@
     <Component class="java.awt.Label" name="label9">
       <Properties>
         <Property name="name" type="java.lang.String" value="idoltotalammount" noResource="true"/>
-        <Property name="text" type="java.lang.String" value="idoltotalammount"/>
+        <Property name="text" type="java.lang.String" value="Total Ammount"/>
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="var_idoltotalammount">
@@ -155,7 +155,7 @@
     </Component>
     <Component class="java.awt.Label" name="label7">
       <Properties>
-        <Property name="text" type="java.lang.String" value="CustomerContact"/>
+        <Property name="text" type="java.lang.String" value="Customer Contact"/>
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="var_custcontactno">
