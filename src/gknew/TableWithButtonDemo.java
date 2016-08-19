@@ -20,7 +20,8 @@ package gknew;
  *
  * @author gandhark
  */
-import static gknew.TestTableSortFilter.buildTableModel;
+//import static dummy.TestTableSortFilter.buildTableModel;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
@@ -40,19 +41,29 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
-public class TableWithButtonDemo 
+public class TableWithButtonDemo extends JPanel 
 {
  
   
-    
+        private Object[][] data;
+
         String url = "jdbc:mysql://localhost:3306/customerdata";
         String userid = "root";
         String password = "";
@@ -65,48 +76,43 @@ public class TableWithButtonDemo
 
         
         String updatequery;
-        /* private Object[][] data1=
-            {{"USA", "Washington DC", 280, true},
-            {"Canada", "Ottawa", 32, true},
-            {"United Kingdom", "London", 60, true},
-            {"Germany", "Berlin", 83, true},
-            {"France", "Paris", 60, true},
-            {"Norway", "Oslo", 4.5, true},
-            {"India", "New Delhi", 1046, true}
-        };
-        */
-        /*
-           private String[] columnNames1 = { "String", "Integer", "Float", "" };
-           private Object[][] data = { { "Dummy", new Integer(12), new Float(12.15), "Consulter" } };
-        */
-        
-        
-           // private Object data1[][] =(Object[][]) td.mymetod();
-              //private DefaultTableModel model = new DefaultTableModel(data1, columnNames);
     
-// JOptionPane.showMessageDialog(null, new JScrollPane(table));
-    
-/*  
-  private TableModel model = new DefaultTableModel(data, columnNames)
-  {
-    private static final long serialVersionUID = 1L;
-
-    public boolean isCellEditable(int row, int column)
-    {
-      return column == 3;
-    }
-  };
-  private JTable table = new JTable(model);
-
-  */
+  
             private JFrame frame = new JFrame("Table Demo");       
           
-           // private String[] columnNames = {"Country", "Capital", "Population in Millions","g","g","g","g","g","g","button","f"};
-           // private Object[][] data;
+         
             private TableFromMySqlDatabase td= new TableFromMySqlDatabase();
             private JTable table = new JTable(buildTableModel(rs));
             
+            
+            
+            
+            
+            
+             TableColumnModel tcm = table.getColumnModel();
 
+   // JOptionPane.showMessageDialog(null, new JScrollPane(table));
+    
+    
+    
+    
+  // private JTable jTable = new JTable(model);
+
+    private TableRowSorter<TableModel> rowSorter
+            = new TableRowSorter<>(table.getModel());
+
+    private JTextField jtfFilter = new JTextField();
+    private JButton jbtFilter = new JButton("Filter");
+
+    
+            
+            
+            
+
+    public void sortData() throws SQLException
+    {
+       //System.out.println( Arrays.toString(td.mymethod()));
+    }
   
     public static DefaultTableModel buildTableModel(ResultSet rs)
         throws SQLException {
@@ -185,34 +191,137 @@ public class TableWithButtonDemo
     
   public TableWithButtonDemo() throws SQLException 
   {
-    table.getColumnModel().getColumn(9).setCellRenderer(new ClientsTableButtonRenderer());
+    
+      this.data = new Object[][]{            
+        };
+       //  System.out.println(Arrays.toString(td.mymethod()));
+        table.setRowSorter(rowSorter);
+
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.add(new JLabel("Specify a word to match:"),
+                BorderLayout.WEST);
+        panel.add(jtfFilter, BorderLayout.CENTER);
+
+        setLayout(new BorderLayout());
+        add(panel, BorderLayout.SOUTH);
+        add(new JScrollPane(table), BorderLayout.CENTER);
+
+        jtfFilter.getDocument().addDocumentListener(new DocumentListener(){
+
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                String text = jtfFilter.getText();
+
+                if (text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                String text = jtfFilter.getText();
+
+                if (text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+        });
+        //tcm.removeColumn(tcm.getColumn(9));
+        
+        
+      
+      
+      
+      
+      
+      table.getColumnModel().getColumn(9).setCellRenderer(new ClientsTableButtonRenderer());
     table.getColumnModel().getColumn(9).setCellEditor(new ClientsTableRenderer(new JCheckBox()));
     table.setPreferredScrollableViewportSize(table.getPreferredSize());
     table.setShowHorizontalLines(true);
     table.setShowVerticalLines(false);
 
-    JScrollPane scroll = new JScrollPane(table);
+   /* JScrollPane scroll = new JScrollPane(table);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.add(scroll);
     frame.pack();
     frame.setLocation(150, 150);
-    frame.setVisible(true);
+    frame.setVisible(true);*/
   }
 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   public static void main(String[] args) throws Exception
   {
     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-    EventQueue.invokeLater(new Runnable()
+    /*EventQueue.invokeLater(new Runnable()
     {
       public void run()
       {
           try {
-              new TableWithButtonDemo();
+              
+              
+              new TableWithButtonDemo().sortData();
           } catch (SQLException ex) {
               Logger.getLogger(TableWithButtonDemo.class.getName()).log(Level.SEVERE, null, ex);
           }
       }
     });
+    
+    */
+    
+    SwingUtilities.invokeLater(new Runnable(){
+            public void run() {
+                try {
+                    JFrame frame = new JFrame("Row Filter");
+                    
+                    TableWithButtonDemo u=new TableWithButtonDemo();
+                    u.sortData();
+                    //frame.add(table);
+                    frame.add(u);
+                    frame.pack();
+                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(TableWithButtonDemo.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        });
+    
+    
+       /* try
+        {
+        new TableWithButtonDemo().sortData();
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+                }*/
+    
+    
+    
   }
 
   class ClientsTableButtonRenderer extends JButton implements TableCellRenderer
@@ -322,7 +431,7 @@ public class TableWithButtonDemo
                         //here forcefully asked to set value as fullpayment.
                         table.setValueAt(table.getValueAt(row, 7), row,6 );
                         int t=(int)table.getValueAt(row, 7)- (int) table.getValueAt(row, 6);
-              table.setValueAt(t, row,10 );
+              table.setValueAt(t, row,9 );
               
               
               
